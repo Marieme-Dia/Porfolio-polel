@@ -1,0 +1,23 @@
+PORTFOLIO MARIEME DIA — VERSION DE DÉPART
+
+CONTENU
+- index.html : structure et textes du portfolio
+- style.css : identité visuelle, responsive et animations
+- script.js : curseur souris, menu mobile, apparitions et fenêtres projets
+
+LANCEMENT
+1. Décompresse le dossier.
+2. Ouvre index.html dans Chrome, Firefox ou Edge.
+3. Une connexion Internet est nécessaire pour charger les polices Google Fonts.
+   Le site fonctionne sans installation ni serveur.
+
+À PERSONNALISER AVANT PUBLICATION
+- Remplacer le bloc portrait illustré par une photo ou une illustration personnelle.
+- Ajouter les vraies captures d'écran, maquettes et prototypes de chaque projet.
+- Compléter les études de cas avec les problématiques, recherches, rôles et résultats réels.
+- Ajouter le vrai lien LinkedIn et, si souhaité, le CV PDF.
+- Vérifier les coordonnées affichées et les liens.
+
+NOTE
+Les descriptions de projets sont volontairement générales : elles ne prétendent pas décrire des fonctionnalités ou résultats qui n'ont pas encore été confirmés.
+Le curseur souris personnalisé apparaît sur les ordinateurs avec pointeur précis. Sur mobile, le curseur système est conservé.

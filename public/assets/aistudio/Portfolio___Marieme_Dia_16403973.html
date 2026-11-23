@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marieme Dia – Designer UI & UX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#2B2630;--bg2:#352F3B;--ink:#F7F5F6;--mute:#B9B1BD;--line:rgba(247,245,246,.14);--plum:#945BA1;--rose:#F08AA1;--orchid:#E09FC7;--blush:#F8C1BB;--btn-ink:#2B2630;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F7F5F6;--bg2:#EFEAF0;--ink:#2B2630;--mute:#6E6574;--line:rgba(43,38,48,.15);--plum:#7E4A8B;--btn-ink:#F7F5F6;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F7F5F6;--bg2:#EFEAF0;--ink:#2B2630;--mute:#6E6574;--line:rgba(43,38,48,.15);--plum:#7E4A8B;--btn-ink:#F7F5F6;color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.65 Poppins,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+h1,h2,h3{font-family:Montserrat,Poppins,sans-serif;line-height:1.08;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--orchid);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+/* petals */
+.flower{position:relative;width:var(--s,320px);height:var(--s,320px)}
+.p{position:absolute;width:50%;height:50%;background:var(--c);transition:transform .35s ease-out}
+.p.a{top:0;left:0;border-radius:0 100% 0 100%;--c:var(--plum)}
+.p.b{top:0;right:0;border-radius:100% 0 100% 0;--c:var(--rose)}
+.p.c{bottom:0;left:0;border-radius:100% 0 100% 0;--c:var(--orchid)}
+.p.d{bottom:0;right:0;border-radius:0 100% 0 100%;--c:var(--blush)}
+.flower.mini{--s:30px}
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font:600 16px Montserrat,sans-serif}
+nav{display:flex;align-items:center;gap:clamp(14px,3vw,34px);font-size:15px}
+nav a{text-decoration:none;color:var(--mute);transition:color .2s}
+nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px}
+@media(max-width:640px){nav a.hide{display:none}}
+/* hero */
+.hero{min-height:calc(100svh - 68px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px;padding:48px 0 72px}
+.hero h1{font-size:clamp(40px,6.4vw,86px);font-weight:800}
+.hero h1 span{background:linear-gradient(100deg,var(--plum),var(--rose) 60%,var(--blush));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:30em;margin:26px 0 34px;color:var(--mute);font-size:18px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-block;padding:15px 28px;border-radius:999px;font:500 15px Poppins,sans-serif;text-decoration:none;border:1.5px solid var(--ink);transition:transform .2s,background .2s}
+.btn.fill{background:linear-gradient(100deg,var(--plum),var(--rose));border-color:transparent;color:#fff}
+.btn:hover{transform:translateY(-3px)}
+.stage{display:grid;place-items:center;perspective:900px}
+.hero .flower{--s:min(78vw,400px);transform-style:preserve-3d;transition:transform .2s ease-out}
+.hero .p{transform:scale(0) rotate(-120deg);animation:bloom 1.1s cubic-bezier(.2,1.3,.4,1) forwards}
+.hero .b{animation-delay:.15s}.hero .c{animation-delay:.3s}.hero .d{animation-delay:.45s}
+@keyframes bloom{to{transform:scale(1) rotate(0)}}
+.hero .flower.live .p{animation:none;transform:translate(calc(var(--x,0)*var(--k)*1px),calc(var(--y,0)*var(--k)*1px))}
+.p.a{--k:-1.1}.p.b{--k:1.5}.p.c{--k:1.9}.p.d{--k:-1.5}
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg2)}
+.marq div{display:flex;gap:56px;width:max-content;animation:slide 32s linear infinite;font:600 clamp(20px,3vw,30px) Montserrat,sans-serif;color:var(--mute)}
+.marq b{color:var(--rose);font-weight:600}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:clamp(72px,10vw,130px) 0}
+h2{font-size:clamp(32px,4.6vw,56px);font-weight:700;margin-bottom:14px}
+.sub{color:var(--mute);max-width:36em;margin-bottom:48px}
+/* projects */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:start}
+.list{border-top:1px solid var(--line)}
+.row{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);padding:22px 4px;cursor:pointer;font:inherit;transition:padding .3s,color .3s}
+.row h3{font-size:clamp(22px,2.6vw,30px);font-weight:600;color:var(--mute);transition:color .3s}
+.row small{display:block;color:var(--mute);font-size:14px;margin-top:4px}
+.row[aria-selected="true"]{padding-left:22px}
+.row[aria-selected="true"] h3{color:var(--ink)}
+.panel{position:sticky;top:100px;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:32px;min-height:440px;display:flex;flex-direction:column;gap:22px}
+.panel .flower{--s:190px;align-self:center;animation:spin .8s cubic-bezier(.2,1.2,.4,1)}
+.panel .p{background:var(--c1)}
+.panel .a{--c1:var(--ca)}.panel .b{--c1:var(--cb)}.panel .c{--c1:var(--cc)}.panel .d{--c1:var(--cd)}
+@keyframes spin{from{transform:rotate(-90deg) scale(.6);opacity:.2}}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:5px 14px;border-radius:999px;border:1px solid var(--line);font-size:13px;color:var(--mute)}
+.panel h3{font-size:26px}
+.panel p{color:var(--mute);font-size:16px}
+/* approach */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--bg2);border-radius:24px;padding:28px 24px 30px;border:1px solid var(--line);transition:transform .3s}
+.step:hover{transform:translateY(-6px) rotate(-1deg)}
+.step i{display:block;width:54px;height:54px;margin-bottom:22px;background:var(--c)}
+.step h3{font-size:22px;margin-bottom:8px}
+.step p{font-size:15px;color:var(--mute)}
+@media(max-width:900px){.hero,.work{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.panel{position:static}.stage{order:-1}.hero{min-height:0}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+/* contact */
+.contact{background:linear-gradient(135deg,var(--plum),#B5679F 55%,var(--rose));border-radius:36px;padding:clamp(36px,6vw,80px);color:#fff;position:relative;overflow:hidden}
+.contact h2{font-size:clamp(34px,6vw,76px);max-width:11em}
+.mail{display:inline-block;margin:22px 0 30px;font:600 clamp(18px,3vw,30px) Montserrat,sans-serif;word-break:break-all}
+.cbtn{background:#fff;color:#2B2630;border:0;padding:14px 26px;border-radius:999px;font:500 15px Poppins;cursor:pointer;margin-right:12px}
+.facts{display:flex;flex-wrap:wrap;gap:12px 36px;margin-top:34px;font-size:15px;opacity:.95}
+.contact .flower{position:absolute;right:-70px;bottom:-70px;--s:300px;opacity:.22}
+.contact .p{background:#fff!important}
+footer{padding:36px 0 48px;color:var(--mute);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+#toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:999px;opacity:0;transition:.3s;z-index:40;font-size:15px}
+#toast.on{transform:translate(-50%,0);opacity:1}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero .p{transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="brand" href="#top" aria-label="Accueil"><span class="flower mini"><i class="p a"></i><i class="p b"></i><i class="p c"></i><i class="p d"></i></span>Marieme Dia</a>
+<nav><a class="hide" href="#projets">Projets</a><a class="hide" href="#methode">Méthode</a><a href="#contact">Contact</a><button id="theme" aria-label="Changer de thème">◐</button></nav>
+</div></header>
+
+<main id="top">
+<div class="wrap hero">
+<div>
+<h1>Des interfaces claires, qui <span>donnent envie</span> de rester.</h1>
+<p class="lead">Je suis Marieme, designer UI &amp; UX à Dakar. Je transforme des idées confuses en produits simples à utiliser et agréables à regarder.</p>
+<div class="btns"><a class="btn fill" href="#projets">Voir mes projets</a><a class="btn" href="#contact">Me contacter</a></div>
+</div>
+<div class="stage" id="stage"><div class="flower" id="flower"><i class="p a"></i><i class="p b"></i><i class="p c"></i><i class="p d"></i></div></div>
+</div>
+
+<div class="marq" aria-hidden="true"><div id="mq"></div></div>
+
+<section id="projets"><div class="wrap">
+<h2>Projets choisis</h2>
+<p class="sub">Choisissez un projet pour en voir le résumé.</p>
+<div class="work">
+<div class="list" role="tablist" aria-label="Projets" id="list"></div>
+<article class="panel" id="panel" role="tabpanel" aria-live="polite">
+<div class="flower" id="pf"><i class="p a"></i><i class="p b"></i><i class="p c"></i><i class="p d"></i></div>
+<h3 id="pt"></h3><p id="pd"></p><div class="tags" id="pg"></div>
+</article>
+</div></div></section>
+
+<section id="methode" style="background:var(--bg2)"><div class="wrap">
+<h2>Ma méthode, en quatre pétales</h2>
+<p class="sub">Chaque projet suit les mêmes étapes, dans cet ordre, avec de vrais utilisateurs à chacune.</p>
+<div class="steps">
+<div class="step"><i style="--c:var(--plum);border-radius:0 100% 0 100%"></i><h3>Comprendre</h3><p>Entretiens, observation et analyse pour cerner le vrai besoin.</p></div>
+<div class="step"><i style="--c:var(--rose);border-radius:100% 0 100% 0"></i><h3>Explorer</h3><p>Parcours, croquis et pistes multiples avant de choisir une direction.</p></div>
+<div class="step"><i style="--c:var(--orchid);border-radius:0 100% 0 100%"></i><h3>Concevoir</h3><p>Maquettes Figma, design system et prototypes cliquables.</p></div>
+<div class="step"><i style="--c:var(--blush);border-radius:100% 0 100% 0"></i><h3>Tester</h3><p>Tests d’usage, mesures et ajustements jusqu’à la mise en ligne.</p></div>
+</div></div></section>
+
+<section id="contact"><div class="wrap">
+<div class="contact">
+<h2>Un projet en tête ? Parlons-en.</h2>
+<a class="mail" href="mailto:mariemedia525@gmail.com">mariemedia525@gmail.com</a><br>
+<button class="cbtn" id="copy">Copier l’e-mail</button><a class="btn" style="color:#fff;border-color:#fff" href="tel:+221776966864">Appeler</a>
+<div class="facts"><span>+221 77 696 68 64</span><span>Djiddah Thiaroye Kao, Dakar</span><span>Disponible en freelance et en équipe</span></div>
+<div class="flower"><i class="p a"></i><i class="p b"></i><i class="p c"></i><i class="p d"></i></div>
+</div>
+<footer><span>© Marieme Dia · Designer UI &amp; UX</span><span>Identité POLEL</span></footer>
+</div></section>
+</main>
+<div id="toast" role="status">E-mail copié</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const projects=[
+{t:'Teranga Pay',k:'Application mobile · Paiement',d:'Refonte du parcours d’envoi d’argent : trois écrans au lieu de sept, et un taux d’abandon divisé par deux lors des tests.',g:['Recherche','Prototype','Design system'],c:['#945BA1','#F08AA1','#E09FC7','#F8C1BB']},
+{t:'Sunu Market',k:'Site e-commerce · Boutique locale',d:'Une boutique en ligne pensée pour le mobile d’abord : catalogue rapide, paiement simplifié et interface lisible en plein soleil.',g:['UX','UI','Mobile first'],c:['#F8C1BB','#945BA1','#F08AA1','#E09FC7']},
+{t:'Jappalé',k:'Plateforme web · Association',d:'Un tableau de bord clair pour suivre les dons et les bénévoles, avec une navigation que toute l’équipe adopte sans formation.',g:['Dashboard','Accessibilité'],c:['#E09FC7','#F8C1BB','#945BA1','#F08AA1']},
+{t:'POLEL',k:'Identité visuelle · Branding',d:'Logo en fleur à quatre pétales, palette prune et rose, carte de visite et charte graphique complète.',g:['Logo','Charte','Print'],c:['#945BA1','#F08AA1','#E09FC7','#F8C1BB']}];
+const list=$('#list');
+projects.forEach((p,i)=>{const b=document.createElement('button');b.className='row';b.role='tab';b.innerHTML=`<h3>${p.t}</h3><small>${p.k}</small>`;b.onclick=()=>pick(i);list.append(b)});
+function pick(i){const p=projects[i];
+ [...list.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+ $('#pt').textContent=p.t;$('#pd').textContent=p.d;$('#pg').innerHTML=p.g.map(x=>`<span>${x}</span>`).join('');
+ const f=$('#pf');f.style.animation='none';f.offsetHeight;f.style.animation='';
+ ['a','b','c','d'].forEach((l,n)=>$('#panel').style.setProperty('--c'+l,p.c[n]))}
+pick(0);
+$('#mq').innerHTML=Array(2).fill(['Design UI','<b>✿</b>','Expérience utilisateur','<b>✿</b>','Prototypage Figma','<b>✿</b>','Design system','<b>✿</b>','Identité visuelle','<b>✿</b>','Accessibilité','<b>✿</b>'].map(x=>`<span>${x}</span>`).join('')).join('');
+/* hero flower follows the pointer */
+const fl=$('#flower');setTimeout(()=>fl.classList.add('live'),1700);
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(!reduce)addEventListener('pointermove',e=>{
+ const x=(e.clientX/innerWidth-.5)*40,y=(e.clientY/innerHeight-.5)*40;
+ fl.style.setProperty('--x',x);fl.style.setProperty('--y',y);
+ fl.style.transform=`rotateY(${x*.5}deg) rotateX(${-y*.5}deg)`});
+/* copy + theme */
+$('#copy').onclick=async()=>{try{await navigator.clipboard.writeText('mariemedia525@gmail.com')}catch(e){}
+ const t=$('#toast');t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)};
+$('#theme').onclick=()=>{const r=document.documentElement;
+ const light=getComputedStyle(r).colorScheme==='light';r.dataset.theme=light?'dark':'light'};
+</script>
+</body>
+</html>
